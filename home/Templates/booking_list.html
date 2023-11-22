@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking List</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/bookingList.css' %}" />
+  </head>
+  <body style="background-color: #faf8f8">
+    <div class="w-100">
+      {% comment %}========== Header ============{% endcomment %}
+      <header class="header d-flex justify-content-center flex-column py-5 px-3">
+        <div class="d-flex align-items-center gap-4">
+          <a href="/home">
+            <span class="d-flex justify-content-center align-items-center"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#66BA7A" class="bi bi-caret-left" viewBox="0 0 16 16">
+                <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z" /></svg
+            ></span>
+          </a>
+          <h1>Booking List</h1>
+        </div>
+      </header>
+      <main class="d-flex flex-column pb-5 pt-3 overflow-auto h-100 container-lg" style="background-color: #faf8f8">
+        <ul class="d-flex booking-list-container flex-column gap-3">
+          {% for booking in bookings %}
+          <a href="{% url 'booking_detail' booking.booking_id %}">
+            <li class="booking-list-item">
+              <div class="d-flex justify-content-between align-align-items-center"><span class="booking-list-label">Booking ID</span> <span class="booking-list-info"> {{ booking.booking_id }}</span></div>
+              <hr class="hr" style="color: #00a55d; margin: 5px" />
+              <div class="d-flex justify-content-between align-align-items-center"><span class="booking-list-label">Booking date </span> <span class="booking-list-info"> {{ booking.date_booking }}</span></div>
+            </li>
+          </a>
+          {% endfor %}
+        </ul>
+      </main>
+    </div>
+  </body>
+</html>

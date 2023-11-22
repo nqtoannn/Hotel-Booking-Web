@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating</title>
+</head>
+<body>
+  <h1>Danh sách đánh giá</h1>
+
+  <ul>
+    {% for rating in ratings %}
+      <li>{{ rating.user.name }} đánh giá khánh sạn {{rating.hotelID}} {{ rating.value }} sao</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

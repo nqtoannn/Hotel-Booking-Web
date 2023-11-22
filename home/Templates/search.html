@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/search.css' %}" />
+  </head>
+  <body style="background-color: #faf8f8">
+    <div class="w-100">
+      {% comment %}========== Header ============{% endcomment %}
+      <header class="header-search d-flex justify-content-center flex-column py-5 px-3">
+        <div class="d-flex align-items-center gap-4">
+          <a href="/home">
+            <span class="d-flex justify-content-center align-items-center"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#66BA7A" class="bi bi-caret-left" viewBox="0 0 16 16">
+                <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z" /></svg
+            ></span>
+          </a>
+          <h1>Filter hotel</h1>
+        </div>
+      </header>
+      <main class="d-flex flex-column pb-5 pt-3 overflow-auto h-100 container-lg" style="background-color: #faf8f8">
+        <form action="" method="POST" id="searchForm">
+          {% csrf_token %}
+          <div class="form-group mb-4 px-3">
+            <label class="mb-2" for="city">City</label>
+            <input class="form-control" id="city" name="city" value="{{city}}" />
+          </div>
+          <div class="form-group mb-4 px-3">
+            <label class="mb-2" for="numberOf">Number of people</label>
+            <select class="form-control" id="numberOf" name="numberOf">
+              <option value="1" {% if numberOf == 1 %} selected {% endif %}>1</option>
+              <option value="2" {% if numberOf == 2 %} selected {% endif %}>2</option>
+              <option value="3" {% if numberOf == 3 %} selected {% endif %}>3</option>
+              <option value="4" {% if numberOf == 4 %} selected {% endif %}>4</option>
+              <option value="5" {% if numberOf == 5 %} selected {% endif %}>5</option>
+            </select>
+          </div>
+          <div class="form-group mb-4 px-3">
+            <label for="descriptionHotel">Description hotel</label>
+            <textarea class="form-control" id="descriptionHotel" name="descriptionHotel" rows="3"></textarea>
+          </div>
+          <div class="d-flex justify-content-center align-items-center w-100 btn-group gap-3 px-3">
+            <button class="btn btn-custom w-25 rounded-4 btn-outline-dark" type="submit" name="register">Cancel</button>
+            <button class="btn btn-success btn-custom w-25 rounded-4" type="submit" name="register">Submit</button>
+          </div>
+        </form>
+        <div class="row gx-2 align-items-center justify-content-center gap-2 mt-5">
+          {% for hotel in hotelList %}
+          <div class="col-5 hotel-item d-flex align-items-center flex-column gap-2">
+            <div class="hotel-image">
+              <img src="{{hotel.image}}" />
+            </div>
+            <div class="hotel-detail p-2">
+              <a href="{% url 'hotel_detail' hotel.hotelcode %}"><h6 class="hotel-name">{{ hotel.hotelname }}</h6></a>
+              <span class="hotel-description">{{ hotel.address }}</span>
+              <div class="stars">
+                {% for i in '12345' %} {% if i|add:0 <= hotel.starrating %}
+                <span>★</span>
+                {% else %}
+                <span>☆</span>
+                {% endif %} {% endfor %}
+              </div>
+              <span class="hotel-price">${{ hotel.pricemin }} - ${{hotel.pricemax}}</span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </main>
+    </div>
+    <script >
+      console.log("{{descriptionHotel}}")
+      document.getElementById("descriptionHotel").value = "{{descriptionHotel}}"
+    </script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </body>
+</html>

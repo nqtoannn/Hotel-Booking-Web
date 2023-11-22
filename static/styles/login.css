@@ -1,0 +1,131 @@
+h1 {
+  color: #00a55d;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.title {
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.form-provider {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-provider input:nth-child(:not(:last-child)) {
+  margin-bottom: 10px;
+}
+
+.form-provider input {
+  height: 50px;
+  width: 100%;
+}
+
+/* ================ MUI TEXT INPUT =============== */
+.form-input {
+  position: relative;
+}
+
+.form-input input::placeholder {
+  opacity: 1;
+  font-size: 16px;
+  color: #98a1b3;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+}
+
+.form-input input {
+  width: 100%;
+  height: 56px;
+  font-size: 1.2rem;
+  padding: 10px;
+  outline: none;
+  border: 1px solid gray;
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+.form-input label {
+  position: absolute;
+  left: 18px;
+  top: 40%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #98a1b3;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  font-family: "Roboto", sans-serif;
+  font-weight: 600;
+}
+
+/* .form-input input:focus + label,
+.form-input input:not(:placeholder-shown) + label {
+  top: 0;
+  font-size: 0.8rem;
+  color: #00a55d;
+  background: #fff;
+  padding: 7px;
+}
+
+.form-input input:focus {
+  border: 1px solid #00a55d;
+} */
+
+.form-input .forget-password {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.forget-password {
+  color: #00a55d;
+  text-decoration-color: #00a55d;
+  margin-bottom: 24px;
+}
+
+/* ============== BUTTON ================== */
+.btn-custom {
+  padding: 11px, 22px, 11px, 22px;
+  border-radius: 22px;
+  min-height: 46px;
+  background: #00a55d;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  box-shadow: 0px 8px 16px 0px #4a967a3d;
+}
+
+.form-container {
+  width: 100%;
+}
+
+.sign-in {
+  color: #00a55d;
+  text-decoration-color: #00a55d;
+  margin-bottom: 24px;
+  display: inline;
+  text-align: right;
+}
+
+@media screen and (min-width: 768px) {
+  .form-container {
+    width: 100%;
+    max-width: 420px;
+  }
+}

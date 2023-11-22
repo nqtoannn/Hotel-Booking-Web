@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking Detail</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/bookingDetail.css' %}" />
+  </head>
+  <body style="background-color: #faf8f8">
+    <div class="w-100">
+      {% comment %}========== Header ============{% endcomment %}
+      <header class="header d-flex justify-content-center flex-column py-5 px-3">
+        <div class="d-flex align-items-center gap-4">
+          <a href="/booking-list">
+            <span class="d-flex justify-content-center align-items-center"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#66BA7A" class="bi bi-caret-left" viewBox="0 0 16 16">
+                <path d="M10 12.796V3.204L4.519 8 10 12.796zm-.659.753-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z" /></svg
+            ></span>
+          </a>
+          <h1>Booking Detail #{{ booking.booking_id }}</h1>
+        </div>
+      </header>
+      <main class="d-flex flex-column pb-5 pt-3 overflow-auto h-100 container-lg" style="background-color: #faf8f8">
+        <div class="booking-detail-container d-flex flex-column gap-1 w-100 pt-3">
+          <div class="d-flex justify-content-between align-items-center px-3 w-100">
+            <p class="booking-detail-label">Booking person:</p>
+            <p class="booking-detail-info">{{ booking.user.name }}</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center px-3 w-100">
+            <p class="booking-detail-label">Hotel ID:</p>
+            <p class="booking-detail-info">{{ booking.roomId }}</p>
+          </div>
+          <hr class="hr" style="color: #00a55d; margin: 5px" />
+          <div class="d-flex justify-content-between align-items-left px-3 w-100 flex-column gap-1">
+            <p class="booking-detail-label">Booking Date:</p>
+            <p class="booking-detail-info">{{ booking.date_booking }}</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-left px-3 w-100 flex-column gap-1">
+            <p class="booking-detail-label">Check-out date:</p>
+            <p class="booking-detail-info">{{ booking.date_return }}</p>
+          </div>
+          <hr class="hr" style="color: #00a55d; margin: 5px" />
+          <div class="d-flex justify-content-between align-items-center px-3 w-100">
+            <p class="booking-detail-label">Status:</p>
+            <p class="booking-detail-info">{{ booking.status }}</p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

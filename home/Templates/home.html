@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/home.css' %}" />
+  </head>
+  <body>
+    <div class="w-100">
+      {% comment %}========== Header ============{% endcomment %}
+      <header class="box-linear-primary">
+        <div class="w-100 d-flex justify-content-between align-items-center">
+          <h1>Booking App</h1>
+          <div class="d-flex align-items-center gap-2">
+          <div
+            style="background-color: #fff"
+            class="d-inline-flex justify-content-center align-items-center p-2 rounded-4"
+          >
+            <a
+              href="/search"
+              class="d-inline-flex justify-content-center align-items-center"
+              ><img src="{% static 'icon/search-normal.svg' %}"
+            /></a>
+          </div>
+          <div
+            style="background-color: #fff"
+            class="d-inline-flex justify-content-center align-items-center p-2 rounded-4"
+          >
+            <a
+              href="/logout"
+              class="d-inline-flex justify-content-center align-items-center"
+              ><img style="width:24px;height:24px" src="{% static 'icon/log-out-icon.png' %}"
+            /></a>
+          </div>
+        </div>
+        </div>
+        <div class="box-linear-secondary">
+          <p>Hello</p>
+          <h3>{{ username }}</h3>
+        </div>
+      </div>
+    </header>
+    <main class="d-flex flex-column">
+      {% comment %}========== News =========== {% endcomment %}
+      <div class="news">
+        <div class="carousel slide" id="hotelCarousel" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container">
+                <image
+                  src="{% static 'icon/banner.png' %}" />
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container">
+                <image
+                src="{% static 'icon/banner-2.jpg' %}" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% comment %} ========= CATEGORY ============ {% endcomment %}
+      <div class="category mb-5">
+        <div class="d-flex justify-content-between p-3">
+          <h4 class="category-title">Hotel Favorites</h4>
+          <a>
+            <span class="category-see-all">see all</span>
+          </a>
+        </div>
+        <div class="row gx-2 align-items-center justify-content-center gap-2">
+          {% for hotel in result %}
+          <div class="col-5 hotel-item d-flex align-items-center flex-column gap-2">
+            <div class="hotel-image">
+              <img src="{{hotel.image}}"/>
+            </div>
+            <div class="hotel-detail p-2">
+              <a href="{% url 'hotel_detail' hotel.hotelcode %}"><h6 class="hotel-name">{{ hotel.hotelname }}</h6></a>
+              <span class="hotel-description">{{ hotel.address }}</span>
+              <div class="stars">
+                {% for i in '12345' %}
+                  {% if i|add:0 <= hotel.starrating %}
+                    <span>★</span>
+                  {% else %}
+                    <span>☆</span>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <span class="hotel-price">${{ hotel.pricemin }} - ${{hotel.pricemax}}</span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

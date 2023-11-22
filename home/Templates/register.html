@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/register.css' %}" />
+    <style>
+      .container-fluid {
+        background-image: url("{% static 'media/background.png' %}");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="layout">
+        <div class="form-container">
+          <h1 class="title">Register Booking App</h1>
+          <div>
+            <p id="my-paragraph">{{ message  }}</p>
+          </div>
+          <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-provider">
+              <div class="form-input">
+                <input
+                  type="text"
+                  placeholder="User name"
+                  id="username"
+                  name="username"
+                />
+              </div>
+              <div class="form-input">
+                <input
+                  type="email"
+                  placeholder="Email"
+                  id="email"
+                  name="email"
+                />
+              </div>
+              <div class="form-input">
+                <input
+                  type="text"
+                  placeholder="First name"
+                  id="first_name"
+                  name="first_name"
+                />
+              </div>
+            </div>
+            <div class="form-input">
+              <input
+                type="text"
+                placeholder="Last name"
+                id="last_name"
+                name="last_name"
+              />
+            </div>
+              <div class="form-input">
+                <input
+                  type="password"
+                  placeholder="Password"
+                  id="password1"
+                  name="password1"
+                />
+              </div>
+              <div class="form-input">
+                <input
+                  type="password"
+                  placeholder="Re-Enter Password"
+                  id="password2"
+                  name="password2"
+                />
+              </div>
+              <div class="sign-in">
+                <span>
+                  Already have an account?
+                </span>
+                <a class="sign-in" href="/login"> Sign in</a>
+              </div>
+              <div class="d-flex justify-content-center align-items-center w-100">
+                <button
+                class="btn btn-success btn-custom w-100"
+                type="submit"
+                name="register"
+                >
+                Register
+              </button>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      const paragraph = document.getElementById('my-paragraph');
+      paragraph.style.display = 'block';
+      // Ẩn thẻ p sau 10 giây
+      setTimeout(function() {
+          paragraph.style.display = 'none';
+      }, 10000); 
+  </script>
+  </body>
+</html>

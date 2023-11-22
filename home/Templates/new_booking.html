@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Booking Mới</title>
+</head>
+<body>
+    <h1>Tạo Booking Mới</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        {% comment %} <label for="user">Người dùng:</label>
+        <select name="user" id="user">
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
+        </select><br> {% endcomment %}
+
+        <label for="hotelID">Mã Khách Sạn:</label>
+        <input type="text" name="hotelID" id="hotelID"><br>
+
+        <input type="submit" value="Tạo Booking">
+    </form>
+</body>
+</html>
